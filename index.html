@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Tushi Sushi — Holiday Pre-Orders</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
+<style>
+:root {
+  --primary: #E07A3D;
+  --secondary: #FDF6E3;
+  --accent: #C94A3A;
+  --text: #3D2E1F;
+  --bg: #FFF8EE;
+  --info-bg: #FDF6E3;
+  --info-text: #3D2E1F;
+  --info-border: #E07A3D;
+}
+
+* {
+  box-sizing: border-box;
+  font-family: Poppins, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  display: flex;
+  justify-content: center;
+  padding: 16px;
+}
+
+.container {
+  max-width: 460px;
+  width: 100%;
+}
+
+.logo {
+  box-shadow: 0 4px 10px rgba(0,0,0,.1);
+  text-align: center;
+  padding: 12px;
+  border-radius: 14px;
+  margin-bottom: 16px;
+}
+
+.logo img {
+  max-width: 100%;
+}
+
+.banner {
+  background: linear-gradient(135deg, var(--primary), var(--accent));
+  color: #fff;
+  border-radius: 14px;
+  padding: 26px 16px 20px;
+  text-align: center;
+  margin-bottom: 16px;
+  position: relative;
+  overflow: hidden;
+}
+
+.lights {
+  position: absolute;
+  top: 6px;
+  left: 0;
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  pointer-events: none;
+}
+
+.lights span {
+  width: 8px;
+  height: 8px;
+  background: #fff;
+  border-radius: 50%;
+  animation: twinkle 1.5s infinite alternate;
+}
+
+.lights span:nth-child(odd) {
+  background: #FFD966;
+  animation-delay: .3s;
+}
+
+.lights span:nth-child(even) {
+  background: #FF6F61;
+  animation-delay: .6s;
+}
+
+@keyframes twinkle {
+  from { opacity: .3; transform: scale(.8); }
+  to { opacity: 1; transform: scale(1.2); }
+}
+
+.santa {
+  position: absolute;
+  top: 40px;
+  left: -120px;
+  font-size: 28px;
+  animation: flySanta 12s linear infinite;
+  pointer-events: none;
+}
+
+@keyframes flySanta {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(600px); }
+}
+
+.snow {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.snow span {
+  position: absolute;
+  top: -10%;
+  color: rgba(255,255,255,.9);
+  animation: snowfall linear infinite;
+}
+
+.snow span:nth-child(1) { left: 5%; animation-duration: 6s; font-size: 10px; }
+.snow span:nth-child(2) { left: 15%; animation-duration: 8s; }
+.snow span:nth-child(3) { left: 30%; animation-duration: 7s; }
+.snow span:nth-child(4) { left: 45%; animation-duration: 9s; }
+.snow span:nth-child(5) { left: 60%; animation-duration: 6.5s; }
+.snow span:nth-child(6) { left: 75%; animation-duration: 8.5s; }
+.snow span:nth-child(7) { left: 90%; animation-duration: 7.5s; }
+
+@keyframes snowfall {
+  0% { transform: translateY(0); opacity: 0; }
+  10% { opacity: 1; }
+  100% { transform: translateY(120%); opacity: 0; }
+}
+
+.card {
+  background: var(--secondary);
+  border-radius: 16px;
+  padding: 14px;
+  box-shadow: 0 6px 16px rgba(0,0,0,.08);
+  position: relative;
+  margin-bottom: 16px;
+}
+
+.card img {
+  width: 100%;
+  border-radius: 12px;
+  margin-bottom: 12px;
+}
+
+.holiday-tag {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  background: var(--accent);
+  color: #fff;
+  padding: 6px 12px;
+  border-radius: 999px;
+  font-size: .8rem;
+  font-weight: 600;
+}
+
+.product-title {
+  text-align: center;
+  color: var(--primary);
+  font-weight: 700;
+  font-size: 1.6rem;
+  letter-spacing: 0.5px;
+}
+
+.subtext {
+  text-align: center;
+  font-size: .9rem;
+  color: #7A5A3A;
+  margin-top: 4px;
+  margin-bottom: 8px;
+}
+
+.prices {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin-top: 16px;
+}
+
+.price {
+  background: #fff;
+  border-radius: 14px;
+  padding: 14px;
+  text-align: left;
+}
+
+.price strong {
+  font-size: 1.4rem;
+  display: block;
+  margin-bottom: 6px;
+}
+
+.price.party {
+  border: 2px solid var(--accent);
+  padding-top: 32px;
+  position: relative;
+}
+
+.best-value {
+  position: absolute;
+  top: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--accent);
+  color: #fff;
+  padding: 5px 12px;
+  border-radius: 999px;
+  font-size: .85rem;
+  font-weight: 600;
+}
+
+.cta {
+  width: 100%;
+  height: 52px;
+  border: none;
+  border-radius: 999px;
+  background: linear-gradient(135deg, var(--primary), var(--accent));
+  color: #fff;
+  font-weight: 600;
+  font-size: 1rem;
+  cursor: pointer;
+  animation: pulse 2s infinite;
+  margin-bottom: 12px;
+}
+
+.info-box {
+  background: var(--info-bg);
+  border-radius: 12px;
+  padding: 12px 16px;
+  color: #A87B5B;
+  font-weight: 600;
+  font-size: 0.95rem;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 12px;
+  border: 1px solid #DDA77A;
+  box-shadow: 0 1px 4px rgba(221, 167, 122, 0.12);
+}
+
+.info-box .icon {
+  width: 20px;
+  height: 20px;
+  fill: #DDA77A;
+  flex-shrink: 0;
+}
+
+.instagram-link {
+  text-align: center;
+  margin: 12px 0;
+  font-size: 0.9rem;
+  color: var(--primary);
+}
+
+.instagram-link a {
+  color: var(--primary);
+  text-decoration: underline;
+}
+
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.06); }
+  100% { transform: scale(1); }
+}
+
+.inclusions {
+  margin-top: 10px;
+  text-align: left;
+  line-height: 1.4;
+}
+
+.inclusion-item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-bottom: 6px;
+  font-size: 0.95rem;
+}
+
+@media (max-width: 400px) {
+  .prices { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+
+<body>
+<main class="container">
+
+  <div class="logo">
+    <img src="img/TUSHI-LOGO-A.png" alt="Tushi Sushi Logo" />
+  </div>
+
+  <div class="banner">
+    <div class="lights">
+      <span></span><span></span><span></span><span></span><span></span>
+      <span></span><span></span><span></span><span></span>
+    </div>
+
+    <div class="santa">🎅🛷</div>
+
+    <div class="snow">
+      <span>❄</span><span>❄</span><span>❄</span><span>❄</span>
+      <span>❄</span><span>❄</span><span>❄</span>
+    </div>
+
+    <h2>Holiday Pre-Orders</h2>
+    <p>Delivery: Dec 24 & Dec 31 ONLY</p>
+  </div>
+
+  <div class="card">
+    <div class="holiday-tag">🎄 Limited Holiday Offer</div>
+
+    <img src="img/baked-sushi.png" alt="Cheesy Baked Sushi" />
+
+    <h1 class="product-title">Cheesy Baked Sushi</h1>
+    <div class="subtext">Made with love for the holidays ❤️</div>
+
+    <div class="prices">
+      <div class="price">
+        <strong>₱599</strong>
+    <span style="font-weight: 600;">Merry Morsels</span><br />
+    <span style="color: gray;">20.5 cm × 20.5 cm</span><br />
+        <div class="inclusions">
+          <div class="inclusion-item">👥 Good for 4–5 pax</div>
+          <div class="inclusion-item">🍙 2 Packs of Roasted Seaweed</div>
+          <div class="inclusion-item">🟢 Wasabi</div>
+          <div class="inclusion-item">🧂 Special Japanese Soy Sauce</div>
+        </div>
+      </div>
+
+      <div class="price party">
+        <div class="best-value">BEST VALUE</div>
+        <strong>₱999</strong>
+        <span style="font-weight: 600;">Yuletide Feast</span><br />
+        <span style="color: gray;">32.3 cm × 26.5 cm</span><br />
+        <div class="inclusions">
+          <div class="inclusion-item">👥 Good for 6–10 pax</div>
+          <div class="inclusion-item">🍙 4 Packs of Roasted Seaweed</div>
+          <div class="inclusion-item">🟢 Wasabi</div>
+          <div class="inclusion-item">🧂 Special Japanese Soy Sauce</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="info-box">
+    <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+      <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm.88 15h-1.75v-6h1.75v6zm0-8h-1.75V7h1.75v2z"/>
+    </svg>
+    <span>Reserve your holiday baked sushi by completing the Google Order Form—just click the button below</span>
+  </div>
+
+  <button class="cta" onclick="window.open('https://forms.gle/X7ExuwKLnymEKdf77')">
+    Reserve Now
+  </button>
+
+  <p class="instagram-link">
+    Questions? DM us on
+    <a
+      href="https://www.instagram.com/tushisushiofficial/"
+      target="_blank"
+      rel="noopener noreferrer"
+      >Instagram</a
+    >
+  </p>
+
+</main>
+</body>
+</html>
